@@ -5,7 +5,7 @@
 
 Author: [Rishika Mohanta](https://neurorishika.github.io/)
 
-Latest Build Date: 2023-07-21 22:42:02
+Latest Build Date: 2023-07-21 23:25:38
 
 ## About the Project
 
@@ -44,20 +44,86 @@ The project is organized as follows:
 .gitignore
 LICENSE
 README.md
-analysis
-   |-- .gitkeep
 poetry.lock
 poetry.toml
-processed_data
-   |-- .gitkeep
-pyproject.toml
-rpytemplate
+projects
+   |-- DimensionalArtists
+   |   |-- README.md
+   |   |-- playground.ipynb
+   |-- EvoMegaLearners
+   |   |-- README.md
+   |   |-- scratch.ipynb
+   |-- FlyMBLearner
+   |   |-- Analyse.ipynb
+   |   |-- MBL.ipynb
+   |-- HD-Models
+   |   |-- 2-4-ringattractor.ipynb
+   |   |-- Chang2023-network.ipynb
+   |   |-- classical-ringattractor.ipynb
+   |   |-- world_generator.ipynb
+   |-- LearnableMetaplasticity
+   |   |-- README.md
+   |   |-- hopfield.ipynb
+   |   |-- learningrule_pytorch.ipynb
+   |   |-- networks.py
+   |-- PiPulse
+   |   |-- .gitignore
+   |   |-- README.md
+   |   |-- code
+   |   |   |-- interactive
+   |   |   |   |-- Hyperparameter Search.ipynb
+   |   |   |   |-- Mirollo Strogatz.ipynb
+   |   |   |   |-- clean_attempt.ipynb
+   |   |   |   |-- make_sudoku_graph.ipynb
+   |   |   |   |-- matlab.mat
+   |   |   |   |-- spacelol.npy
+   |   |   |   |-- sudoku.npy
+   |   |   |   |-- sudoku.py
+   |   |-- git_automate.sh
+   |   |-- reference
+   |   |   |-- thesis.pdf
+   |   |   |-- thesis.ps
+   |   |-- results
+   |   |   |-- partial_jan10_2019_I_0_01875_E_0_0035.png
+   |-- ProbSpikingNetworks
+   |   |-- Documentation
+   |   |   |-- model.aux
+   |   |   |-- model.pdf
+   |   |   |-- model.synctex.gz
+   |   |   |-- model.tex
+   |   |-- Model
+   |   |   |-- Probabilistic Model - Test.ipynb
+   |   |   |-- Results Changing I_ext.png
+   |   |   |-- Results I_ext_0.png
+   |   |-- README.md
+   |-- olfaction-modelzoo
+   |   |-- CovidORN-Model
+   |   |   |-- Odor-mixtures-master.rar
+   |   |   |-- Single ORN Response.ipynb
+   |   |   |-- journal.pcbi.1004063.g002.png
+   |   |-- GaussianOdorPlumes
+   |   |   |-- odor_conc.gif
+   |   |   |-- odor_plume.gif
+   |   |   |-- odor_sim_scratch.ipynb
+   |   |-- LocustKC-MapModel
+   |   |   |-- Map Model.ipynb
+   |   |   |-- spikes.npy
+   |   |-- Minimal-Pompy
+   |   |   |-- minpompy
+   |   |   |   |-- __init__.py
+   |   |   |   |-- models.py
+   |   |   |   |-- processors.py
+   |   |   |-- odor_plume.gif
+   |   |   |-- plume.gif
+   |   |   |-- plume.mp4
+   |   |   |-- pompy_notebook.ipynb
+   |   |-- ORN-KineticModel
+   |   |   |-- ORN Model.ipynb
+   |   |-- README.md
+pycnmodelzoo
    |-- __init__.py
    |-- rdp_client.py
-scripts
-   |-- .gitkeep
-tests
-   |-- __init__.py
+pyproject.toml
 utils
    |-- build.py
    |-- quickstart.py
