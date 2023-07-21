@@ -1,0 +1,57 @@
+\documentclass[a4paper,12pt]{article} 
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+\title{Probabilistic Spiking Neuron Model}
+\author{Saptarshi Soham Mohanta\\
+Indian Institute of Science Education and Research, Pune\\
+Maharashtra - 411008}
+
+\begin{document}
+\maketitle
+
+\section*{Model Description}
+The dynamic variable for this model of spiking neuron is the vector $\vec{\theta}$. Let us consider a system of n neurons connected via excitatory and inhibitory connections.
+
+Let $\vec{\theta}_t$ be the n-dimensional vector of firing probabilities of each of the n neurons at the time t. By the definition of probability, each element of this vector is bounded by 0 and 1. In absence of any current input to the neurons, the probability of firing would go down as the activity decays to equilibrium. Let $\lambda$ be the rate for the exponential decay.
+
+Thus in absence of current input (external and synaptic), $\vec{\theta}$ will follow the dynamical equation:
+$$\vec{\theta}_{t+1} = \lambda \vec{\theta}_t$$
+
+But at each time step = t, we perform a sampling event to evaluate the firing of the neurons. Let $\langle\vec{\theta}\rangle_t$ be the result of the sampling event. This means that  $[\langle\vec{\theta}\rangle_t]_i$ is the result of a binary coin toss with $P(1) = [\vec{\theta}_t]_i$ and $P(0) = 1-[\vec{\theta}_t]_i$, where $i = 1,2,3...n$.
+
+But whenever the neuron fires, the probability of firing again is set to zero. Thus the final dynamical equation without current input becomes
+
+$$\vec{\theta}_{t+1} = \lambda (1-\langle\vec{\theta}\rangle_t) \vec{\theta}_t$$
+
+We initialize the values of $\vec{\theta}_t$ with values from a uniform random distribution and then follow the system by the rules. This will give a system of non interacting neurons that have a dynamic probability of firing. 
+
+Now we model the interactions and the current response. Let us define excitatory and inhibitory connectivity matrices $\mathbf{[E]_{n\times n}}$ and  $\mathbf{[I]_{n\times n}}$ with the horizontal axis representing the pre-synaptic neuron and the vertical axis the post-synaptic neuron. We also define a function $I_{ext}(t):\mathbb{R}\rightarrow\mathbb{R}^n$ that gives us the external current input to each neuron at time t. We also define two parameters $e$ and $i$ that describe the excitation and inhibition coupling coefficient respectively. Finally, we define a response function based on Mirollo Strogatz Model, $U:\mathbb{R}\rightarrow\mathbb{R}$ which has the following properties:
+$$U'(x)>0\ and\ U''(x)<0,\forall x \in [0,1]$$
+$$U(0)=0\ and\ U(1)=1$$
+
+We will use this function to update the probability based on current input. Say, the current input is $\vec{\epsilon}$ where each element $\epsilon_i \in [-1,1]$ or any other bound that depends on the range of the response function over which the response is variable. We define the new probability using the function $H:\mathbb{R}^n\rightarrow\mathbb{R}^n$ where
+
+$$[H(\vec{x},\vec{\epsilon})]_i= [U^{-1}(U(x_i)+\epsilon_i)]_i\ \forall i\in \{1,2,3...n\}$$
+
+One such function that satisfies these properties is:
+$$U_b(x)= \frac{1}{b}ln(1+(e^b-1)x)$$
+
+This function is numerically and analytically useful because the function $H_b(\vec{x},\vec{\epsilon})$ for $U_b(x)$ becomes an affline linear map
+
+$$H_b(\vec{x},\vec{\epsilon}) = e^{b\epsilon}x + \frac{e^{b\epsilon}-1}{e^b-1}$$
+
+Now, given a synaptic response function $F:\mathbb{R}\rightarrow[0,1]$, we define the synaptic current $I^{syn}$ at time t+1 as
+
+$$I_{syn}(t+1) = e.F(\mathbf{E}\times \langle\vec{\theta}\rangle_{t}) - i.F(\mathbf{I}\times \langle\vec{\theta}\rangle_{t})$$ 
+
+For simplicity, we can use the linear response function
+$$F(x)=x/n$$
+
+Now we define the dynamical equation with current input as 
+$$\vec{\theta}_{t+1} = H_b(\ \lambda (1-\langle\vec{\theta}\rangle_t) \vec{\theta}_t\ ,\ I_{ext}(t+1) + I_{syn}(t+1)\ )$$
+
+This model can now be simulated.
+
+\end{document}
