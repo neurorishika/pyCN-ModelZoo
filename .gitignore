@@ -162,3 +162,8 @@ temp/
 **/*.zip
 # directorypaths
 directory.path
+directory.path
+
+# Mac OS
+
+**/.DS_Store
