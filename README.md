@@ -10,11 +10,17 @@ Latest Build Date: 2023-07-21 22:42:02
 
 Project description is being updated. Please check back later.
 
-## READ CAREFULLY
+## Instructions
 
 This is a [Poetry](https://python-poetry.org/)-enabled python project. Poetry installs a virtual environment in the project directory and all packages are installed in this virtual environment. This means that you do not need to install any packages in your system. The virtual environment is automatically activated when you run the project through Poetry. 
 
 If you use [VS Code](https://code.visualstudio.com/), you can set the Python interpreter to the Poetry virtual environment `.venv` in the project directory for script execution and debugging and use the Poetry virtual environment `.venv` for the Jupyter kernel.
+
+First, you need to setup a git alias for tree generation by running the following command on the terminal:
+
+```
+git config --global alias.tree '! git ls-tree --full-name --name-only -t -r HEAD | sed -e "s/[^-][^\/]*\//   |/g" -e "s/|\([^ ]\)/|-- \1/"'
+```
 
 To run the project, make sure you have Poetry installed and run the following commands in the project directory:
 
